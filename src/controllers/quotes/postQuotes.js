@@ -11,7 +11,7 @@ export default function postQuotes(req, res) {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `*${quote}*`,
+          text: `_${quote}_`,
         },
       },
     ],
