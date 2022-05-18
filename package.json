@@ -1,0 +1,28 @@
+{
+  "name": "yodas-cracking-quotes-express-server",
+  "version": "1.0.0",
+  "description": "Express server for Yoda's Cracking Quotes",
+  "main": "index.js",
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "loglevel": "^1.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/register": "^7.17.7",
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "start": "node .",
+    "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src"
+  },
+  "keywords": [],
+  "author": "bnguyensn",
+  "license": "MIT"
+}
