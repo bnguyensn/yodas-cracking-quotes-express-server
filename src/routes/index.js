@@ -1,9 +1,11 @@
 import express from 'express';
-import { getMathRoutes } from './math';
+import { getQuotesRoutes } from './quotes';
 
 function getRoutes() {
   const router = express.Router();
-  router.use('/math', getMathRoutes());
+
+  router.use('/quotes', getQuotesRoutes());
+
   return router;
 }
 
