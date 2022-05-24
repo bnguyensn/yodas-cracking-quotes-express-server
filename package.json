@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
+    "got": "^11.8.3",
     "loglevel": "^1.8.0"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
   },
   "scripts": {
     "start": "node .",
+    "dev": "npm run start",
     "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
     "format": "prettier --loglevel=warn --write \"**/*.{js,jsx,json}\"",
     "lint": "eslint \"src/**/*.js\""
