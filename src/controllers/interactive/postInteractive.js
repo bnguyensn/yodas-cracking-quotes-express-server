@@ -5,10 +5,11 @@ import suggestives from '../bored/suggestives.json';
 
 export default async function postInteractive(req, res) {
   try {
+    const payload = JSON.parse(req.body.payload);
     const {
       response_url,
       actions: { action_id },
-    } = req.payload;
+    } = payload;
 
     if (action_id === 'yodabored-button-refresh-activity') {
       // Replace the original Bored message with a new one.
@@ -17,9 +18,7 @@ export default async function postInteractive(req, res) {
 
       const suggestive = suggestives[randIntBetween(0, suggestives.length - 1)];
 
-      // Just fire off the request, doesn't matter what the response is. Thus
-      // there's no need to await.
-      got(response_url, {
+      await got(response_url, {
         method: 'POST',
         json: {
           replace_original: 'true',

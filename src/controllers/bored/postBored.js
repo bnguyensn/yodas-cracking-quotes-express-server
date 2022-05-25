@@ -9,7 +9,7 @@ export default async function postBored(req, res) {
     const suggestive = suggestives[randIntBetween(0, suggestives.length - 1)];
 
     return res.json({
-      response_type: 'in_channel',
+      response_type: 'ephemeral',
       blocks: [
         {
           type: 'section',
