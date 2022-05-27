@@ -1,7 +1,7 @@
 import got from 'got';
 import { getBoredActivity } from '../../api/bored';
-import { randIntBetween, sendInternalServerError } from '../../utils';
-import suggestives from '../bored/suggestives.json';
+import { sendInternalServerError } from '../../utils';
+import { getBoredResponse } from '../../messages';
 
 export default async function postInteractive(req, res) {
   try {
@@ -16,39 +16,14 @@ export default async function postInteractive(req, res) {
 
       const { key: activityKey, activity } = await getBoredActivity();
 
-      const suggestive = suggestives[randIntBetween(0, suggestives.length - 1)];
+      const boredResponse = getBoredResponse({
+        activityKey,
+        activity,
+      });
 
       await got(response_url, {
         method: 'POST',
-        json: {
-          replace_original: 'true',
-          blocks: [
-            {
-              type: 'section',
-              text: {
-                type: 'mrkdwn',
-                text: `_${activity}, ${suggestive}._`,
-              },
-            },
-            {
-              type: 'actions',
-              elements: [
-                {
-                  type: 'button',
-                  text: {
-                    type: 'plain_text',
-                    text: 'Give me something else?',
-                    emoji: true,
-                  },
-                  // The activity's ID (key) is passed to the button's value so we
-                  // can identify which "activity" triggered the refresh button.
-                  value: activityKey,
-                  action_id: 'yodabored-button-refresh-activity',
-                },
-              ],
-            },
-          ],
-        },
+        json: boredResponse,
       });
     }
 
