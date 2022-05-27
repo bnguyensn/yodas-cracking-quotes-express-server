@@ -6,12 +6,12 @@ import suggestives from '../bored/suggestives.json';
 export default async function postInteractive(req, res) {
   try {
     const payload = JSON.parse(req.body.payload);
-    const {
-      response_url,
-      actions: { action_id },
-    } = payload;
+    console.dir(payload);
+    const { response_url, actions } = payload;
 
-    if (action_id === 'yodabored-button-refresh-activity') {
+    const actionId = actions[0].action_id;
+
+    if (actionId === 'yodabored-button-refresh-activity') {
       // Replace the original Bored message with a new one.
 
       const { key: activityKey, activity } = await getBoredActivity();
