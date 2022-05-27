@@ -1,5 +1,5 @@
 import { randIntBetween } from '../utils';
-import suggestives from './constants/suggestives.json';
+import { actionIds, suggestives } from './constants';
 
 export default function getBoredResponse({ activityKey, activity }) {
   const suggestive = suggestives[randIntBetween(0, suggestives.length - 1)];
@@ -27,7 +27,7 @@ export default function getBoredResponse({ activityKey, activity }) {
             // The activity's ID (key) is passed to the button's value so we
             // can identify which "activity" triggered the refresh button.
             value: activityKey,
-            action_id: 'yodabored-button-refresh-activity',
+            action_id: actionIds.BORED_REFRESH_ACTIVITY,
           },
         ],
       },

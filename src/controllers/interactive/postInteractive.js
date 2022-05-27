@@ -2,6 +2,7 @@ import got from 'got';
 import { getBoredActivity } from '../../api/bored';
 import { sendInternalServerError } from '../../utils';
 import { getBoredResponse } from '../../messages';
+import { actionIds } from '../../messages/constants';
 
 export default async function postInteractive(req, res) {
   try {
@@ -11,7 +12,7 @@ export default async function postInteractive(req, res) {
 
     const actionId = actions[0].action_id;
 
-    if (actionId === 'yodabored-button-refresh-activity') {
+    if (actionId === actionIds.BORED_REFRESH_ACTIVITY) {
       // Replace the original Bored message with a new one.
 
       const { key: activityKey, activity } = await getBoredActivity();
