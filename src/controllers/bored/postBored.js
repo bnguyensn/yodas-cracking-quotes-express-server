@@ -1,12 +1,12 @@
 import { getBoredActivity } from '../../api/bored';
 import { sendInternalServerError } from '../../utils';
-import { getBoredResponse } from '../../messages';
+import { getBoredSuggestionMessage } from '../../messages';
 
 export default async function postBored(req, res) {
   try {
     const { key: activityKey, activity } = await getBoredActivity();
 
-    const boredResponse = getBoredResponse({
+    const boredResponse = getBoredSuggestionMessage({
       activityKey,
       activity,
     });

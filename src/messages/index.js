@@ -1,1 +1,2 @@
-export { default as getBoredResponse } from './getBoredResponse';
+export { default as getBoredPostMessage } from './getBoredPostMessage';
+export { default as getBoredSuggestionMessage } from './getBoredSuggestionMessage';
