@@ -28,7 +28,8 @@
     "dev": "npm run start",
     "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
     "format": "prettier --loglevel=warn --write \"**/*.{js,jsx,json}\"",
-    "lint": "eslint \"src/**/*.js\""
+    "lint": "eslint \"src/**/*.js\"",
+    "deploy": "npm run build && flyctl deploy"
   },
   "keywords": [],
   "author": "bnguyensn",
